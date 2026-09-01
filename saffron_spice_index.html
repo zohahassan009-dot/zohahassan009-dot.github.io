@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saffron & Spice | Pakistani Recipes</title>
+<meta name="description" content="Authentic Pakistani recipes, cooking tips, desserts and home food ideas.">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>body{font-family:Arial,sans-serif}.page{display:none}.page.active{display:block}</style>
+</head>
+<body class="bg-stone-50 text-slate-900">
+<nav class="bg-white shadow p-4 sticky top-0 z-10">
+<div class="max-w-6xl mx-auto flex justify-between items-center">
+<b class="text-2xl text-emerald-800">Saffron & Spice</b>
+<div class="space-x-4">
+<button onclick="show('home')">Home</button>
+<button onclick="show('blog')">Recipes & Blog</button>
+<button onclick="show('about')">About</button>
+<button onclick="show('contact')">Contact</button>
+</div></div></nav>
+
+<section id="home" class="page active">
+<div class="bg-emerald-900 text-white text-center py-24 px-5">
+<h1 class="text-5xl font-bold mb-5">Authentic Pakistani Flavors</h1>
+<p class="text-xl mb-8">Traditional recipes and cooking tips for the modern kitchen.</p>
+<button onclick="show('blog')" class="bg-orange-600 px-7 py-3 rounded-full font-bold">Browse Recipes</button>
+</div>
+<div class="max-w-6xl mx-auto p-8">
+<h2 class="text-3xl font-bold mb-8">Latest From The Kitchen</h2>
+<div id="homePosts" class="grid md:grid-cols-3 gap-6"></div>
+</div></section>
+
+<section id="blog" class="page max-w-6xl mx-auto p-8">
+<h1 class="text-4xl font-bold mb-8 text-center">Recipes & Cooking Tips</h1>
+<div id="blogPosts" class="grid md:grid-cols-3 gap-6"></div>
+</section>
+
+<section id="article" class="page max-w-3xl mx-auto p-8">
+<button onclick="show('blog')" class="text-orange-600 font-bold mb-6">← Back to Recipes</button>
+<div id="articleContent"></div>
+</section>
+
+<section id="about" class="page max-w-3xl mx-auto p-8">
+<h1 class="text-4xl font-bold mb-6">About Saffron & Spice</h1>
+<p class="text-lg leading-8">Saffron & Spice is a Pakistani recipe blog focused on traditional home cooking, regional flavors, desserts and practical kitchen tips.</p>
+</section>
+
+<section id="contact" class="page max-w-2xl mx-auto p-8">
+<h1 class="text-4xl font-bold mb-6">Contact</h1>
+<form onsubmit="event.preventDefault();alert('Thank you!');" class="space-y-4">
+<input required placeholder="Name" class="w-full p-4 border rounded">
+<input required type="email" placeholder="Email" class="w-full p-4 border rounded">
+<textarea required placeholder="Message" class="w-full p-4 border rounded" rows="5"></textarea>
+<button class="w-full bg-emerald-900 text-white p-4 rounded font-bold">Send Message</button>
+</form></section>
+
+<footer class="bg-emerald-950 text-white text-center p-10 mt-16">
+<p>Saffron & Spice — Pakistani Recipes & Cooking Tips</p>
+</footer>
+
+<script>
+const posts=[
+{id:1,title:"Authentic Beef Nihari",cat:"Pakistani Recipes",text:"A slow-cooked Pakistani classic with rich spices and silky gravy.",img:"https://images.unsplash.com/photo-1546833998-877b37c2e5c6?auto=format&fit=crop&w=800&q=80"},
+{id:2,title:"Perfect Basmati Rice: 5 Tips",cat:"Cooking Tips",text:"Simple techniques for long, separate and fragrant rice.",img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80"},
+{id:3,title:"Pistachio Kulfi",cat:"Desserts",text:"A creamy cardamom and pistachio frozen dessert.",img:"https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80"},
+{id:4,title:"Nan Khatai",cat:"Baking",text:"A traditional crumbly Pakistani cookie perfect with chai.",img:"https://images.unsplash.com/photo-1601303581223-57a39835bc2b?auto=format&fit=crop&w=800&q=80"},
+{id:5,title:"Daal Chawal",cat:"Home Food",text:"Comforting lentils and rice with a flavorful tadka.",img:"https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=800&q=80"}];
+
+function show(id){
+ document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ window.scrollTo(0,0);
+}
+function card(p){
+ return `<article onclick="openPost(${p.id})" class="bg-white rounded-2xl overflow-hidden shadow cursor-pointer">
+ <img src="${p.img}" alt="${p.title}" class="w-full h-52 object-cover">
+ <div class="p-5"><small class="text-orange-600 font-bold">${p.cat}</small>
+ <h2 class="text-xl font-bold mt-2">${p.title}</h2><p class="text-gray-500 mt-2">${p.text}</p></div></article>`;
+}
+function render(){
+ document.getElementById('blogPosts').innerHTML=posts.map(card).join('');
+ document.getElementById('homePosts').innerHTML=posts.slice(0,3).map(card).join('');
+}
+function openPost(id){
+ const p=posts.find(x=>x.id===id);
+ document.getElementById('articleContent').innerHTML=`<small class="text-orange-600 font-bold">${p.cat}</small><h1 class="text-4xl font-bold my-4">${p.title}</h1><img src="${p.img}" class="w-full rounded-2xl mb-8"><p class="text-lg leading-8">${p.text}</p><h2 class="text-2xl font-bold mt-8 mb-3">Recipe Guide</h2><p class="leading-8">Add your own tested ingredients, measurements, preparation steps, cooking time and original cooking tips here before publishing.</p>`;
+ show('article');
+}
+render();
+</script>
+</body></html>
