@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saffron & Spice | Pakistani Recipes</title>
+<meta name="description" content="Authentic Pakistani recipes, cooking tips, desserts and comforting home food ideas.">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#faf8f3;color:#172033}
+button,input{font:inherit}
+.nav{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 12px #00000012}
+.nav-inner{max-width:1100px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:27px;font-weight:800;color:#075c4d}
+.nav-links{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.nav-links button{border:0;background:transparent;padding:9px 12px;border-radius:9px;cursor:pointer;color:#172033}
+.nav-links button:hover{background:#f1eee7;color:#075c4d}
+.page{display:none}.page.active{display:block}
+.hero{background:linear-gradient(135deg,#064e43,#08725e);color:white;padding:82px 20px;text-align:center}
+.hero h1{font-size:clamp(38px,7vw,64px);margin:0 0 16px}
+.hero p{font-size:20px;max-width:680px;margin:0 auto 28px;line-height:1.6}
+.btn{border:0;border-radius:999px;padding:13px 22px;font-weight:700;cursor:pointer}
+.btn-orange{background:#e86f2d;color:white}.btn-green{background:#075c4d;color:white}
+.container{max-width:1100px;margin:auto;padding:48px 20px}
+.section-title{text-align:center;font-size:34px;margin:0 0 28px}
+.categories{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
+.categories button{border:1px solid #d8d1c4;background:white;padding:10px 16px;border-radius:999px;cursor:pointer}
+.categories button.active,.categories button:hover{background:#075c4d;color:white}
+.search{max-width:620px;margin:0 auto 30px;display:flex}
+.search input{width:100%;padding:14px 16px;border:1px solid #d8d1c4;border-radius:12px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 5px 22px #00000010;cursor:pointer;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 28px #00000018}
+.card img{width:100%;height:220px;object-fit:cover;display:block}
+.card-body{padding:20px}.cat{color:#df6829;font-weight:700;font-size:14px}
+.card h2{font-size:22px;margin:8px 0}.muted{color:#687180;line-height:1.6}
+.article{max-width:800px;margin:auto;padding:48px 20px}
+.back{border:0;background:transparent;color:#df6829;font-weight:700;cursor:pointer;margin-bottom:20px}
+.article img{width:100%;max-height:440px;object-fit:cover;border-radius:18px}
+.article h1{font-size:42px;margin:16px 0}.article h2{margin-top:30px}
+.recipe-box{background:white;border-radius:16px;padding:22px;margin-top:24px;box-shadow:0 4px 18px #0000000d}
+.recipe-box li{margin:9px 0;line-height:1.5}
+.about,.contact{max-width:760px;margin:auto;padding:55px 20px;line-height:1.8}
+.about h1,.contact h1{font-size:40px;line-height:1.2}
+.form{display:grid;gap:14px}.form input,.form textarea{width:100%;padding:14px;border:1px solid #d8d1c4;border-radius:10px;background:white}
+.form textarea{min-height:150px;resize:vertical}
+.footer{background:#003b32;color:white;text-align:center;padding:38px 20px;margin-top:20px}
+.empty{text-align:center;padding:30px;color:#687180}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.nav-inner{flex-direction:column;align-items:center}.logo{font-size:25px}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{padding:62px 18px}.nav-links{gap:2px}.nav-links button{padding:8px}.card img{height:230px}.article h1{font-size:34px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">Saffron &amp; Spice</div>
+    <div class="nav-links">
+      <button onclick="show('home')">Home</button>
+      <button onclick="show('blog')">Recipes &amp; Blog</button>
+      <button onclick="show('about')">About</button>
+      <button onclick="show('contact')">Contact</button>
+    </div>
+  </div>
+</nav>
+
+<section id="home" class="page active">
+  <div class="hero">
+    <h1>Authentic Pakistani Flavors</h1>
+    <p>Traditional recipes, comforting home food and simple cooking tips for your modern kitchen.</p>
+    <button class="btn btn-orange" onclick="show('blog')">Explore Recipes</button>
+  </div>
+  <div class="container">
+    <h2 class="section-title">Featured From The Kitchen</h2>
+    <div id="homePosts" class="grid"></div>
+  </div>
+</section>
+
+<section id="blog" class="page">
+  <div class="container">
+    <h1 class="section-title">Recipes &amp; Cooking Tips</h1>
+    <div class="search">
+      <input id="searchInput" type="search" placeholder="Search biryani, nihari, kulfi..." oninput="renderBlog()">
+    </div>
+    <div id="categories" class="categories"></div>
+    <div id="blogPosts" class="grid"></div>
+  </div>
+</section>
+
+<section id="article" class="page">
+  <div class="article">
+    <button class="back" onclick="show('blog')">← Back to Recipes</button>
+    <div id="articleContent"></div>
+  </div>
+</section>
+
+<section id="about" class="page">
+  <div class="about">
+    <h1>About Saffron &amp; Spice</h1>
+    <p>Saffron &amp; Spice is a Pakistani recipe blog focused on traditional home cooking, regional flavors, desserts and practical kitchen tips.</p>
+    <p>Our goal is to make beloved Pakistani dishes easy to discover and enjoyable to prepare at home.</p>
+  </div>
+</section>
+
+<section id="contact" class="page">
+  <div class="contact">
+    <h1>Contact</h1>
+    <p>Have a recipe suggestion or a question? Send us a message.</p>
+    <form class="form" onsubmit="event.preventDefault();alert('Thank you for contacting Saffron & Spice!');this.reset();">
+      <input required placeholder="Your name">
+      <input required type="email" placeholder="Your email">
+      <textarea required placeholder="Your message"></textarea>
+      <button class="btn btn-green" type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>Saffron &amp; Spice — Pakistani Recipes &amp; Cooking Tips</p>
+</footer>
+
+<script>
+const posts=[
+{id:1,title:"Authentic Beef Nihari",cat:"Pakistani Recipes",text:"A slow-cooked Pakistani classic with rich spices and silky gravy.",img:"https://images.unsplash.com/photo-1546833998-877b37c2e5c6?auto=format&fit=crop&w=1000&q=85",ingredients:["Beef","Nihari masala","Ginger & garlic","Onion","Cooking oil"],steps:["Brown the beef with onion, ginger and garlic.","Add nihari spices and enough water.","Cover and slow-cook until the beef is tender.","Finish with fresh ginger, coriander and lemon."]},
+{id:2,title:"Perfect Basmati Rice: 5 Tips",cat:"Cooking Tips",text:"Simple techniques for long, separate and fragrant rice.",img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1000&q=85",ingredients:["Basmati rice","Water","Salt","Whole spices"],steps:["Rinse the rice until the water is mostly clear.","Soak for about 20–30 minutes.","Cook with measured water and salt.","Rest covered for a few minutes before fluffing."]},
+{id:3,title:"Pistachio Kulfi",cat:"Desserts",text:"A creamy cardamom and pistachio frozen dessert.",img:"https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1000&q=85",ingredients:["Milk","Pistachios","Cardamom","Sugar","Condensed milk"],steps:["Simmer milk gently until slightly reduced.","Add sugar, cardamom and condensed milk.","Stir in chopped pistachios.","Pour into molds and freeze until firm."]},
+{id:4,title:"Nan Khatai",cat:"Baking",text:"A traditional crumbly Pakistani cookie perfect with chai.",img:"https://images.unsplash.com/photo-1601303581223-57a39835bc2b?auto=format&fit=crop&w=1000&q=85",ingredients:["Flour","Sugar","Ghee","Cardamom","Pistachios"],steps:["Mix flour, sugar, cardamom and ghee into a soft dough.","Shape small cookies and top with pistachios.","Bake until lightly golden.","Cool before serving with chai."]},
+{id:5,title:"Daal Chawal",cat:"Home Food",text:"Comforting lentils and rice with a flavorful tadka.",img:"https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1000&q=85",ingredients:["Lentils","Rice","Onion","Garlic","Cumin & red chili"],steps:["Cook lentils until soft.","Prepare rice separately.","Make a tadka with oil, onion, garlic and spices.","Pour the tadka over the dal and serve with rice."]},
+{id:6,title:"Chicken Karahi",cat:"Pakistani Recipes",text:"A spicy tomato-based karahi packed with ginger, chili and fresh herbs.",img:"https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1000&q=85",ingredients:["Chicken","Tomatoes","Ginger","Green chilies","Karahi spices"],steps:["Sear the chicken in oil until lightly browned.","Add tomatoes and spices and cook until the oil separates.","Add ginger and green chilies.","Finish with fresh coriander and serve hot."]}
+];
+
+let activeCat="All";
+
+function show(id){
+  document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo(0,0);
+}
+
+function card(p){
+  return `<article class="card" onclick="openPost(${p.id})">
+    <img src="${p.img}" alt="${p.title}" loading="lazy">
+    <div class="card-body">
+      <div class="cat">${p.cat}</div>
+      <h2>${p.title}</h2>
+      <p class="muted">${p.text}</p>
+    </div>
+  </article>`;
+}
+
+function renderHome(){
+  document.getElementById("homePosts").innerHTML=posts.slice(0,3).map(card).join("");
+}
+
+function renderCategories(){
+  const cats=["All",...new Set(posts.map(p=>p.cat))];
+  document.getElementById("categories").innerHTML=cats.map(c=>
+    `<button class="${c===activeCat?"active":""}" onclick="setCategory('${c.replaceAll("'","\\'")}')">${c}</button>`
+  ).join("");
+}
+
+function setCategory(cat){
+  activeCat=cat;
+  renderCategories();
+  renderBlog();
+}
+
+function renderBlog(){
+  const q=document.getElementById("searchInput").value.toLowerCase().trim();
+  const filtered=posts.filter(p=>{
+    const matchesCat=activeCat==="All"||p.cat===activeCat;
+    const matchesSearch=!q||(p.title+" "+p.cat+" "+p.text).toLowerCase().includes(q);
+    return matchesCat&&matchesSearch;
+  });
+  document.getElementById("blogPosts").innerHTML=filtered.length
+    ? filtered.map(card).join("")
+    : `<div class="empty">No recipes found. Try another search.</div>`;
+}
+
+function openPost(id){
+  const p=posts.find(x=>x.id===id);
+  document.getElementById("articleContent").innerHTML=`
+    <div class="cat">${p.cat}</div>
+    <h1>${p.title}</h1>
+    <img src="${p.img}" alt="${p.title}">
+    <p class="muted" style="font-size:19px">${p.text}</p>
+    <div class="recipe-box">
+      <h2>Ingredients</h2>
+      <ul>${p.ingredients.map(x=>`<li>${x}</li>`).join("")}</ul>
+    </div>
+    <div class="recipe-box">
+      <h2>Cooking Guide</h2>
+      <ol>${p.steps.map(x=>`<li>${x}</li>`).join("")}</ol>
+    </div>`;
+  show("article");
+}
+
+renderCategories();
+renderHome();
+renderBlog();
+</script>
+</body>
+</html>
