@@ -155,7 +155,7 @@ function showCategory(c){category=c;document.getElementById("recipes").scrollInt
 function render(){
 const q=document.getElementById("search").value.toLowerCase();
 const list=posts.filter(p=>(category==="All"||p.cat===category)&&(p.title+" "+p.cat+" "+p.text).toLowerCase().includes(q));
-document.getElementById("grid").innerHTML=list.map(p=>`<article class="card"><img src="${p.img}" alt="${p.title}"><div class="card-body"><div class="tag">${p.cat}</div><h3>${p.title}</h3><p>${p.text}</p><a class="read" href="#contact" onclick="alert('Full recipe article coming soon!')">Read Recipe →</a></div></article>`).join("") || "<p style='grid-column:1/-1;text-align:center'>No recipes found. Try another search.</p>";
+document.getElementById("grid").innerHTML=list.map(p=>`<article class="card"><img src="${p.img}" alt="${p.title}"><div class="card-body"><div class="tag">${p.cat}</div><h3>${p.title}</h3><p>${p.text}</p><a class="read" href="${p.title==="Authentic Beef Nihari"?"beef-nihari.html":p.title==="Chicken Karahi"?"chicken-karahi.html":p.title==="Chicken Biryani"?"chicken-biryani.html":p.title==="Classic Chicken Korma"?"chicken-korma.html":p.title==="Perfect Basmati Rice"?"basmati-rice.html":p.title==="Pistachio Kulfi"?"pistachio-kulfi.html":p.title==="Nan Khatai"?"nan-khatai.html":p.title==="Daal Chawal"?"daal-chawal.html":p.title==="Easy Pakistani Baking"?"easy-pakistani-baking.html":"#"}">Read Recipe →</a></div></article>`).join("") || "<p style='grid-column:1/-1;text-align:center'>No recipes found. Try another search.</p>";
 document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.textContent.trim()===category||(category==="All"&&b.textContent.trim()==="All")));
 }
 render();
