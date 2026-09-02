@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zohahassan009-dot.github.io/sitemap.xml
