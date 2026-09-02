@@ -4,201 +4,158 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Saffron & Spice | Pakistani Recipes</title>
-<meta name="description" content="Authentic Pakistani recipes, cooking tips, desserts and comforting home food ideas.">
+<meta name="description" content="Saffron & Spice shares Pakistani home-style recipes, desserts, baking ideas, cooking tips and easy meal inspiration.">
 <style>
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#faf8f3;color:#172033}
-button,input{font:inherit}
-.nav{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 12px #00000012}
-.nav-inner{max-width:1100px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-size:27px;font-weight:800;color:#075c4d}
-.nav-links{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-.nav-links button{border:0;background:transparent;padding:9px 12px;border-radius:9px;cursor:pointer;color:#172033}
-.nav-links button:hover{background:#f1eee7;color:#075c4d}
-.page{display:none}.page.active{display:block}
-.hero{background:linear-gradient(135deg,#064e43,#08725e);color:white;padding:82px 20px;text-align:center}
-.hero h1{font-size:clamp(38px,7vw,64px);margin:0 0 16px}
-.hero p{font-size:20px;max-width:680px;margin:0 auto 28px;line-height:1.6}
-.btn{border:0;border-radius:999px;padding:13px 22px;font-weight:700;cursor:pointer}
-.btn-orange{background:#e86f2d;color:white}.btn-green{background:#075c4d;color:white}
-.container{max-width:1100px;margin:auto;padding:48px 20px}
-.section-title{text-align:center;font-size:34px;margin:0 0 28px}
-.categories{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
-.categories button{border:1px solid #d8d1c4;background:white;padding:10px 16px;border-radius:999px;cursor:pointer}
-.categories button.active,.categories button:hover{background:#075c4d;color:white}
-.search{max-width:620px;margin:0 auto 30px;display:flex}
-.search input{width:100%;padding:14px 16px;border:1px solid #d8d1c4;border-radius:12px;font-size:16px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 5px 22px #00000010;cursor:pointer;transition:.2s}
-.card:hover{transform:translateY(-4px);box-shadow:0 10px 28px #00000018}
-.card img{width:100%;height:220px;object-fit:cover;display:block}
-.card-body{padding:20px}.cat{color:#df6829;font-weight:700;font-size:14px}
-.card h2{font-size:22px;margin:8px 0}.muted{color:#687180;line-height:1.6}
-.article{max-width:800px;margin:auto;padding:48px 20px}
-.back{border:0;background:transparent;color:#df6829;font-weight:700;cursor:pointer;margin-bottom:20px}
-.article img{width:100%;max-height:440px;object-fit:cover;border-radius:18px}
-.article h1{font-size:42px;margin:16px 0}.article h2{margin-top:30px}
-.recipe-box{background:white;border-radius:16px;padding:22px;margin-top:24px;box-shadow:0 4px 18px #0000000d}
-.recipe-box li{margin:9px 0;line-height:1.5}
-.about,.contact{max-width:760px;margin:auto;padding:55px 20px;line-height:1.8}
-.about h1,.contact h1{font-size:40px;line-height:1.2}
-.form{display:grid;gap:14px}.form input,.form textarea{width:100%;padding:14px;border:1px solid #d8d1c4;border-radius:10px;background:white}
-.form textarea{min-height:150px;resize:vertical}
-.footer{background:#003b32;color:white;text-align:center;padding:38px 20px;margin-top:20px}
-.empty{text-align:center;padding:30px;color:#687180}
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.nav-inner{flex-direction:column;align-items:center}.logo{font-size:25px}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{padding:62px 18px}.nav-links{gap:2px}.nav-links button{padding:8px}.card img{height:230px}.article h1{font-size:34px}}
+body{font-family:Arial,Helvetica,sans-serif;background:#fffaf3;color:#2d2119;line-height:1.6}
+a{text-decoration:none;color:inherit}
+header{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 15px #00000012}
+.nav{max-width:1180px;margin:auto;display:flex;align-items:center;gap:18px;padding:15px 20px}
+.brand{font-family:Georgia,serif;font-size:26px;font-weight:700;letter-spacing:.2px;margin-left:auto;margin-right:auto}
+.brand span{display:block;font:12px Arial;color:#9b6b2f;text-align:center;letter-spacing:2px;text-transform:uppercase}
+.menu-btn{width:44px;height:44px;border:0;background:#f5eadb;border-radius:10px;cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:10px}
+.menu-btn i{height:2px;background:#513521;width:100%;display:block}
+.menu{position:fixed;left:0;top:0;width:290px;height:100%;background:#fff;box-shadow:8px 0 25px #0002;z-index:50;transform:translateX(-105%);transition:.25s;padding:28px 22px;overflow:auto}
+.menu.open{transform:translateX(0)}
+.menu h2{font-family:Georgia,serif;margin-bottom:18px;color:#513521}
+.menu a{display:block;padding:11px 12px;border-radius:8px;margin:3px 0;color:#4b382b}
+.menu a:hover{background:#f7ead8}
+.close{float:right;border:0;background:none;font-size:28px;cursor:pointer}
+.overlay{display:none;position:fixed;inset:0;background:#0006;z-index:40}.overlay.show{display:block}
+.search{max-width:1180px;margin:0 auto;padding:12px 20px 18px}
+.searchbox{display:flex;align-items:center;background:#f7efe5;border:1px solid #ead9c5;border-radius:30px;padding:0 16px}
+.searchbox span{font-size:19px}.searchbox input{width:100%;border:0;outline:0;background:transparent;padding:13px 10px;font-size:15px}
+.hero{max-width:1180px;margin:22px auto;padding:70px 25px;border-radius:24px;background:linear-gradient(135deg,#7a4b2a,#b77b3e);color:#fff;text-align:center}
+.hero h1{font:700 46px Georgia,serif;margin-bottom:12px}.hero p{max-width:650px;margin:auto;font-size:18px}
+.btn{display:inline-block;margin-top:24px;background:#fff;color:#6c4327;padding:12px 22px;border-radius:25px;font-weight:700}
+section{max-width:1180px;margin:55px auto;padding:0 20px}
+.title{text-align:center;font:700 32px Georgia,serif;margin-bottom:10px}.subtitle{text-align:center;color:#765f4d;margin-bottom:25px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:25px}
+.filter{border:1px solid #dcc6ad;background:#fff;padding:8px 14px;border-radius:22px;cursor:pointer}.filter.active{background:#7a4b2a;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:#fff;border:1px solid #eadfD2;border-radius:16px;overflow:hidden;box-shadow:0 5px 18px #0000000b;transition:.2s}.card:hover{transform:translateY(-3px)}
+.card img{width:100%;height:170px;object-fit:cover;background:#ead8c2}
+.card-body{padding:16px}.tag{font-size:12px;color:#9b6b2f;font-weight:700;text-transform:uppercase}.card h3{font:700 20px Georgia,serif;margin:6px 0}.card p{font-size:14px;color:#6f5b4b}.read{display:inline-block;margin-top:12px;color:#7a4b2a;font-weight:700}
+.about,.contact{background:#fff;border:1px solid #eadfd2;border-radius:18px;padding:28px;max-width:850px;margin:0 auto}
+.contact p{margin:8px 0}.contact a{color:#7a4b2a;font-weight:700}
+footer{margin-top:65px;background:#3c2a1f;color:#fff;padding:35px 20px;text-align:center}
+footer p{opacity:.8;font-size:14px;margin-top:6px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:38px}}
+@media(max-width:560px){.brand{font-size:21px}.grid{grid-template-columns:1fr}.hero{margin:12px 12px;padding:50px 18px}.hero h1{font-size:32px}.search{padding:10px 12px}.title{font-size:28px}}
 </style>
 </head>
 <body>
 
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<aside class="menu" id="menu">
+<button class="close" onclick="closeMenu()">×</button>
+<h2>Saffron & Spice</h2>
+<a href="#home" onclick="closeMenu()">🏠 Home</a>
+<a href="#dinner" onclick="showCategory('Dinner');closeMenu()">🍽️ Dinner</a>
+<a href="#lunch" onclick="showCategory('Lunch');closeMenu()">🥗 Lunch</a>
+<a href="#breakfast" onclick="showCategory('Breakfast');closeMenu()">🍳 Breakfast</a>
+<a href="#desserts" onclick="showCategory('Desserts');closeMenu()">🍰 Desserts</a>
+<a href="#occasions" onclick="showCategory('Occasions');closeMenu()">🎉 Occasions</a>
+<a href="#baking" onclick="showCategory('Baking');closeMenu()">🧁 Baking</a>
+<a href="#videos" onclick="alert('Videos section coming soon!');closeMenu()">🎥 Videos</a>
+<a href="#cookies" onclick="showCategory('Cookies');closeMenu()">🍪 Cookies</a>
+<a href="#pakistani" onclick="showCategory('Pakistani Recipes');closeMenu()">🍛 Pakistani Recipes</a>
+<a href="#tips" onclick="document.getElementById('tips').scrollIntoView();closeMenu()">💡 Cooking Tips</a>
+<a href="#recipes" onclick="closeMenu()">📖 Recipes & Blog</a>
+<a href="#about" onclick="closeMenu()">ℹ️ About Us</a>
+<a href="#contact" onclick="closeMenu()">📞 Contact</a>
+</aside>
+
+<header id="home">
 <nav class="nav">
-  <div class="nav-inner">
-    <div class="logo">Saffron &amp; Spice</div>
-    <div class="nav-links">
-      <button onclick="show('home')">Home</button>
-      <button onclick="show('blog')">Recipes &amp; Blog</button>
-      <button onclick="show('about')">About</button>
-      <button onclick="show('contact')">Contact</button>
-    </div>
-  </div>
+<button class="menu-btn" onclick="openMenu()" aria-label="Open menu"><i></i><i></i><i></i></button>
+<div class="brand">Saffron & Spice<span>Pakistani Recipes</span></div>
+<div style="width:44px"></div>
 </nav>
+<div class="search">
+<div class="searchbox"><span>⌕</span><input id="search" placeholder="Search recipes, ingredients, or dishes..." oninput="render()"></div>
+</div>
+</header>
 
-<section id="home" class="page active">
-  <div class="hero">
-    <h1>Authentic Pakistani Flavors</h1>
-    <p>Traditional recipes, comforting home food and simple cooking tips for your modern kitchen.</p>
-    <button class="btn btn-orange" onclick="show('blog')">Explore Recipes</button>
-  </div>
-  <div class="container">
-    <h2 class="section-title">Featured From The Kitchen</h2>
-    <div id="homePosts" class="grid"></div>
-  </div>
+<main>
+<div class="hero">
+<h1>Authentic Pakistani Flavors</h1>
+<p>Discover comforting Pakistani home cooking, traditional favorites, easy baking ideas, desserts and practical kitchen tips.</p>
+<a class="btn" href="#recipes">Explore Recipes</a>
+</div>
+
+<section id="recipes">
+<h2 class="title">Recipes & Blog</h2>
+<p class="subtitle">Easy ideas for breakfast, lunch, dinner, desserts and everyday home cooking.</p>
+<div class="filters">
+<button class="filter active" onclick="showCategory('All')">All</button>
+<button class="filter" onclick="showCategory('Pakistani Recipes')">Pakistani Recipes</button>
+<button class="filter" onclick="showCategory('Dinner')">Dinner</button>
+<button class="filter" onclick="showCategory('Lunch')">Lunch</button>
+<button class="filter" onclick="showCategory('Breakfast')">Breakfast</button>
+<button class="filter" onclick="showCategory('Desserts')">Desserts</button>
+<button class="filter" onclick="showCategory('Baking')">Baking</button>
+<button class="filter" onclick="showCategory('Cookies')">Cookies</button>
+</div>
+<div class="grid" id="grid"></div>
 </section>
 
-<section id="blog" class="page">
-  <div class="container">
-    <h1 class="section-title">Recipes &amp; Cooking Tips</h1>
-    <div class="search">
-      <input id="searchInput" type="search" placeholder="Search biryani, nihari, kulfi..." oninput="renderBlog()">
-    </div>
-    <div id="categories" class="categories"></div>
-    <div id="blogPosts" class="grid"></div>
-  </div>
+<section id="about">
+<h2 class="title">About Us</h2>
+<div class="about">
+<p><strong>Welcome to Saffron & Spice!</strong></p>
+<p>We are here to celebrate the rich, comforting flavors of Pakistani home cooking. From classic curries and rice dishes to desserts, cookies and simple baking ideas, our goal is to make delicious food feel easy and approachable.</p>
+<p>Explore our recipes, discover useful cooking tips and find inspiration for everyday meals and special occasions.</p>
+</div>
 </section>
 
-<section id="article" class="page">
-  <div class="article">
-    <button class="back" onclick="show('blog')">← Back to Recipes</button>
-    <div id="articleContent"></div>
-  </div>
+<section id="tips">
+<h2 class="title">Cooking Tips</h2>
+<div class="about">
+<p>Simple kitchen ideas, ingredient tips and practical cooking guidance will be added here to help make everyday cooking easier.</p>
+</div>
 </section>
 
-<section id="about" class="page">
-  <div class="about">
-    <h1>About Saffron &amp; Spice</h1>
-    <p>Saffron &amp; Spice is a Pakistani recipe blog focused on traditional home cooking, regional flavors, desserts and practical kitchen tips.</p>
-    <p>Our goal is to make beloved Pakistani dishes easy to discover and enjoyable to prepare at home.</p>
-  </div>
+<section id="contact">
+<h2 class="title">Contact Us</h2>
+<div class="contact">
+<p>Have a question, suggestion, collaboration idea or recipe request? We'd love to hear from you.</p>
+<p>📞 <strong>Phone:</strong> <a href="tel:03197366197">03197366197</a></p>
+<p>📧 <strong>Email:</strong> <a href="mailto:zohahassan009@gmail.com">zohahassan009@gmail.com</a></p>
+</div>
 </section>
+</main>
 
-<section id="contact" class="page">
-  <div class="contact">
-    <h1>Contact</h1>
-    <p>Have a recipe suggestion or a question? Send us a message.</p>
-    <form class="form" onsubmit="event.preventDefault();alert('Thank you for contacting Saffron & Spice!');this.reset();">
-      <input required placeholder="Your name">
-      <input required type="email" placeholder="Your email">
-      <textarea required placeholder="Your message"></textarea>
-      <button class="btn btn-green" type="submit">Send Message</button>
-    </form>
-  </div>
-</section>
-
-<footer class="footer">
-  <p>Saffron &amp; Spice — Pakistani Recipes &amp; Cooking Tips</p>
+<footer>
+<strong>Saffron & Spice</strong>
+<p>Pakistani recipes, baking ideas, desserts & cooking inspiration.</p>
+<p>© 2026 Saffron & Spice. All rights reserved.</p>
 </footer>
 
 <script>
 const posts=[
-{id:1,title:"Authentic Beef Nihari",cat:"Pakistani Recipes",text:"A slow-cooked Pakistani classic with rich spices and silky gravy.",img:"https://images.unsplash.com/photo-1546833998-877b37c2e5c6?auto=format&fit=crop&w=1000&q=85",ingredients:["Beef","Nihari masala","Ginger & garlic","Onion","Cooking oil"],steps:["Brown the beef with onion, ginger and garlic.","Add nihari spices and enough water.","Cover and slow-cook until the beef is tender.","Finish with fresh ginger, coriander and lemon."]},
-{id:2,title:"Perfect Basmati Rice: 5 Tips",cat:"Cooking Tips",text:"Simple techniques for long, separate and fragrant rice.",img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1000&q=85",ingredients:["Basmati rice","Water","Salt","Whole spices"],steps:["Rinse the rice until the water is mostly clear.","Soak for about 20–30 minutes.","Cook with measured water and salt.","Rest covered for a few minutes before fluffing."]},
-{id:3,title:"Pistachio Kulfi",cat:"Desserts",text:"A creamy cardamom and pistachio frozen dessert.",img:"https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1000&q=85",ingredients:["Milk","Pistachios","Cardamom","Sugar","Condensed milk"],steps:["Simmer milk gently until slightly reduced.","Add sugar, cardamom and condensed milk.","Stir in chopped pistachios.","Pour into molds and freeze until firm."]},
-{id:4,title:"Nan Khatai",cat:"Baking",text:"A traditional crumbly Pakistani cookie perfect with chai.",img:"https://images.unsplash.com/photo-1601303581223-57a39835bc2b?auto=format&fit=crop&w=1000&q=85",ingredients:["Flour","Sugar","Ghee","Cardamom","Pistachios"],steps:["Mix flour, sugar, cardamom and ghee into a soft dough.","Shape small cookies and top with pistachios.","Bake until lightly golden.","Cool before serving with chai."]},
-{id:5,title:"Daal Chawal",cat:"Home Food",text:"Comforting lentils and rice with a flavorful tadka.",img:"https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1000&q=85",ingredients:["Lentils","Rice","Onion","Garlic","Cumin & red chili"],steps:["Cook lentils until soft.","Prepare rice separately.","Make a tadka with oil, onion, garlic and spices.","Pour the tadka over the dal and serve with rice."]},
-{id:6,title:"Chicken Karahi",cat:"Pakistani Recipes",text:"A spicy tomato-based karahi packed with ginger, chili and fresh herbs.",img:"https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1000&q=85",ingredients:["Chicken","Tomatoes","Ginger","Green chilies","Karahi spices"],steps:["Sear the chicken in oil until lightly browned.","Add tomatoes and spices and cook until the oil separates.","Add ginger and green chilies.","Finish with fresh coriander and serve hot."]}
+{title:"Authentic Beef Nihari",cat:"Dinner",text:"Slow-cooked Pakistani comfort food with deep spices and rich flavor.",img:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80"},
+{title:"Chicken Karahi",cat:"Dinner",text:"A classic Pakistani karahi packed with tomatoes, ginger and bold spices.",img:"https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=900&q=80"},
+{title:"Chicken Biryani",cat:"Pakistani Recipes",text:"A fragrant rice favorite layered with spiced chicken and aromatic herbs.",img:"https://images.unsplash.com/photo-1563379091339-03246963d51a?auto=format&fit=crop&w=900&q=80"},
+{title:"Classic Chicken Korma",cat:"Dinner",text:"Creamy, aromatic and gently spiced Pakistani-style korma.",img:"https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=900&q=80"},
+{title:"Perfect Basmati Rice",cat:"Lunch",text:"Five practical tips for fluffy, separate basmati rice every time.",img:"https://images.unsplash.com/photo-1516685018646-549198525c1b?auto=format&fit=crop&w=900&q=80"},
+{title:"Pistachio Kulfi",cat:"Desserts",text:"A creamy frozen Pakistani dessert with pistachio and cardamom.",img:"https://images.unsplash.com/photo-1563805042-7684c019e11a?auto=format&fit=crop&w=900&q=80"},
+{title:"Nan Khatai",cat:"Cookies",text:"Delicate Pakistani-style shortbread cookies with a buttery crumb.",img:"https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=80"},
+{title:"Daal Chawal",cat:"Lunch",text:"A comforting everyday combination of creamy lentils and rice.",img:"https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=80"},
+{title:"Easy Pakistani Baking",cat:"Baking",text:"Simple baking inspiration for tea time and family gatherings.",img:"https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=900&q=80"}
 ];
-
-let activeCat="All";
-
-function show(id){
-  document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  window.scrollTo(0,0);
+let category="All";
+function openMenu(){document.getElementById("menu").classList.add("open");document.getElementById("overlay").classList.add("show")}
+function closeMenu(){document.getElementById("menu").classList.remove("open");document.getElementById("overlay").classList.remove("show")}
+function showCategory(c){category=c;document.getElementById("recipes").scrollIntoView({behavior:"smooth"});render()}
+function render(){
+const q=document.getElementById("search").value.toLowerCase();
+const list=posts.filter(p=>(category==="All"||p.cat===category)&&(p.title+" "+p.cat+" "+p.text).toLowerCase().includes(q));
+document.getElementById("grid").innerHTML=list.map(p=>`<article class="card"><img src="${p.img}" alt="${p.title}"><div class="card-body"><div class="tag">${p.cat}</div><h3>${p.title}</h3><p>${p.text}</p><a class="read" href="#contact" onclick="alert('Full recipe article coming soon!')">Read Recipe →</a></div></article>`).join("") || "<p style='grid-column:1/-1;text-align:center'>No recipes found. Try another search.</p>";
+document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.textContent.trim()===category||(category==="All"&&b.textContent.trim()==="All")));
 }
-
-function card(p){
-  return `<article class="card" onclick="openPost(${p.id})">
-    <img src="${p.img}" alt="${p.title}" loading="lazy">
-    <div class="card-body">
-      <div class="cat">${p.cat}</div>
-      <h2>${p.title}</h2>
-      <p class="muted">${p.text}</p>
-    </div>
-  </article>`;
-}
-
-function renderHome(){
-  document.getElementById("homePosts").innerHTML=posts.slice(0,3).map(card).join("");
-}
-
-function renderCategories(){
-  const cats=["All",...new Set(posts.map(p=>p.cat))];
-  document.getElementById("categories").innerHTML=cats.map(c=>
-    `<button class="${c===activeCat?"active":""}" onclick="setCategory('${c.replaceAll("'","\\'")}')">${c}</button>`
-  ).join("");
-}
-
-function setCategory(cat){
-  activeCat=cat;
-  renderCategories();
-  renderBlog();
-}
-
-function renderBlog(){
-  const q=document.getElementById("searchInput").value.toLowerCase().trim();
-  const filtered=posts.filter(p=>{
-    const matchesCat=activeCat==="All"||p.cat===activeCat;
-    const matchesSearch=!q||(p.title+" "+p.cat+" "+p.text).toLowerCase().includes(q);
-    return matchesCat&&matchesSearch;
-  });
-  document.getElementById("blogPosts").innerHTML=filtered.length
-    ? filtered.map(card).join("")
-    : `<div class="empty">No recipes found. Try another search.</div>`;
-}
-
-function openPost(id){
-  const p=posts.find(x=>x.id===id);
-  document.getElementById("articleContent").innerHTML=`
-    <div class="cat">${p.cat}</div>
-    <h1>${p.title}</h1>
-    <img src="${p.img}" alt="${p.title}">
-    <p class="muted" style="font-size:19px">${p.text}</p>
-    <div class="recipe-box">
-      <h2>Ingredients</h2>
-      <ul>${p.ingredients.map(x=>`<li>${x}</li>`).join("")}</ul>
-    </div>
-    <div class="recipe-box">
-      <h2>Cooking Guide</h2>
-      <ol>${p.steps.map(x=>`<li>${x}</li>`).join("")}</ol>
-    </div>`;
-  show("article");
-}
-
-renderCategories();
-renderHome();
-renderBlog();
+render();
 </script>
 </body>
 </html>
